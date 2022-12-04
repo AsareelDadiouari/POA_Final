@@ -1,8 +1,9 @@
 package com.backend.poabackend.model;
 
 import jakarta.persistence.*;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
+@Document("Employee")
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -13,9 +14,21 @@ public class Employee {
     @Column(name = "lastName")
     private String lastname;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "organizationId")
     private Organization organization;
+
+    public Employee(Long id, String firstname, String lastname, Organization organization ){
+        this.id = id;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.organization = organization;
+    }
+
+    public Employee() {
+
+    }
+
 
     public Long getId() {
         return id;
