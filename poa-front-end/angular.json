@@ -113,7 +113,6 @@
       }
     }
   },
-  "defaultProject": "poa-front-end",
   "cli": {
     "analytics": "08800a52-3125-482c-baf3-4ea6427c16c4"
   }
