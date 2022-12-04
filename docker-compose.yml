@@ -1,0 +1,28 @@
+version: '3.5' # We use version 3.5 syntax
+services:
+  poa-backend:
+    container_name: poa-backend
+    build:
+      context: ./poa-backend
+      dockerfile: Dockerfile
+    ports:
+      - '443:443'
+    environment:
+      - MONGODB_URI=mongodb+srv://Asa:FavRwReB2lnuleS9@cluster0.u8vwe.mongodb.net/?retryWrites=true&w=majority
+      - MONGODB_USER=Asa
+      - MONGODB_PASSWORD=FavRwReB2lnuleS9
+
+  poa-frontend:
+    depends_on:
+      - poa-backend
+    container_name: poa-angular
+    build:
+      context: ./poa-front-end
+      dockerfile: Dockerfile
+    ports:
+      - '8888:80'
+    volumes:
+      - './Dockerfile:/usr/src/app'
+
+volumes:
+  poa:
