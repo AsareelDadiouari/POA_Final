@@ -1,0 +1,25 @@
+<h1 class="display-4">Ajouter un employé</h1>
+
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="employeeForm" class="organization-form">
+      <div class="mb-3">
+        <label for="typeahead-basic">Nom de famille:</label>
+        <input [formControlName]="'lastname'" id="typeahead-basic"  type="text" class="form-control" />
+      </div>
+      <div class="mb-3">
+        <label for="typeahead-basic1">Prénom :</label>
+        <input [formControlName]="'firstname'" id="typeahead-basic1" type="text" class="form-control" />
+      </div>
+      <div class="mb-3">
+        <label for="typeahead-basic1">Liste des organisations :</label>
+        <select [formControlName]="'selected'" class="form-select" aria-label="Default select example">
+          <option *ngFor="let org of organizations; let i = index" [ngValue]="org" >
+            {{org.name}}
+          </option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-lg btn-outline-primary d-flex p-2" (click)="onSubmit($event)" >Valider</button>
+    </form>
+  </div>
+</div>
