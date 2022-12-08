@@ -1,15 +1,12 @@
 package com.backend.poabackend;
 
-import com.backend.poabackend.model.Organization;
-import com.backend.poabackend.repository.OrganizationRepository;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication(scanBasePackages =
         {
@@ -25,5 +22,17 @@ public class PoaBackendApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(PoaBackendApplication.class, args);
+    }
+
+    @Bean
+    public WebMvcConfigurer corsConfigurer(){
+        return  new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                WebMvcConfigurer.super.addCorsMappings(registry);
+                registry.addMapping("/")
+                        .allowedOrigins("http://localhost:4200", "*");
+            }
+        };
     }
 }

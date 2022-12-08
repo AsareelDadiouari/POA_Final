@@ -1,24 +1,29 @@
 package com.backend.poabackend.model;
 
 import jakarta.persistence.*;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.Date;
 
 @Document("Employee")
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
-    private Long id;
+    @Indexed(unique = true) private Long id;
     @Column(name = "firstName")
     private String firstname;
     @Column(name = "lastName")
     private String lastname;
-
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "organizationId")
     private Organization organization;
 
-    public Employee(Long id, String firstname, String lastname, Organization organization ){
+    private Double salary;
+    private Date employmentDate;
+
+    public Employee(Long id, String firstname, String lastname, Organization organization) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -60,5 +65,21 @@ public class Employee {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
+    }
+
+    public Double getSalary() {
+        return salary;
+    }
+
+    public Date getEmploymentDate() {
+        return employmentDate;
+    }
+
+    public void setEmploymentDate(Date employmentDate) {
+        this.employmentDate = employmentDate;
+    }
+
+    public void setSalary(Double salary) {
+        this.salary = salary;
     }
 }
