@@ -43,13 +43,14 @@ export class AddEmployeeComponent implements OnInit {
   getDateOnSelect(date: Date) {
     this.employmentDate = date;
   }
+
   onSubmit($event: MouseEvent) {
     const employee = {
       firstname: this.employeeForm.get('firstname').value,
       lastname: this.employeeForm.get('lastname').value,
       organization: this.employeeForm.get('selectedOrganizationStr').value as Organization,
       salary: this.employeeForm.get('salary').value,
-      employmentDate : this.employmentDate
+      employmentDate: this.employmentDate
     } as Employee;
 
     this.employeeService.saveEmployee(employee).subscribe({

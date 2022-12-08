@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import { Organization } from 'src/app/model/organization.interface';
-import { OrganizationService } from 'src/app/service/organization.service';
+import {Organization} from 'src/app/model/organization.interface';
+import {OrganizationService} from 'src/app/service/organization.service';
 
 @Component({
   selector: 'app-add-organization',
@@ -22,15 +22,15 @@ export class AddOrganizationComponent implements OnInit {
     });
   }
 
-  getDateOnSelect(date: Date){
+  getDateOnSelect(date: Date) {
     this.creationDate = date;
     console.log(this.creationDate);
   }
 
   onSubmit(event: Event): void {
     const organization = {
-      name : this.organizationFrom.get("name").value,
-      description : this.organizationFrom.get("description").value,
+      name: this.organizationFrom.get("name").value,
+      description: this.organizationFrom.get("description").value,
       creationDate: this.creationDate
     } as Organization
 

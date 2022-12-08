@@ -6,17 +6,19 @@
     <form [formGroup]="organizationFrom" class="organization-form">
       <div class="mb-3">
         <label for="typeahead-basic">Nom Organisation:</label>
-        <input [formControlName]="'name'" id="typeahead-basic" type="text" class="form-control" />
+        <input [formControlName]="'name'" class="form-control" id="typeahead-basic" type="text"/>
       </div>
       <div class="mb-3">
         <label for="typeahead-basic2">Description :</label>
-        <input [formControlName]="'description'" id="typeahead-basic2" type="text" class="form-control" />
+        <input [formControlName]="'description'" class="form-control" id="typeahead-basic2" type="text"/>
       </div>
       <div class="mb-3">
-        <label for="typeahead-basic1">Date de creation:</label><hr>
-        <my-datepicker id="typeahead-basic1"  (dateChanged)="getDateOnSelect($event)" ></my-datepicker>
+        <label for="typeahead-basic1">Date de creation:</label>
+        <hr>
+        <my-datepicker (dateChanged)="getDateOnSelect($event)" id="typeahead-basic1"></my-datepicker>
       </div>
-      <button type="submit" class="btn btn-lg btn-outline-primary d-flex p-2" (click)="onSubmit($event)" >Valider</button>
+      <button (click)="onSubmit($event)" class="btn btn-lg btn-outline-primary d-flex p-2" type="submit">Valider
+      </button>
     </form>
   </div>
 </div>

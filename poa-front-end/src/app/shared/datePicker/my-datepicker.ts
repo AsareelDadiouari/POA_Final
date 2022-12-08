@@ -1,12 +1,7 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {
-  NgbDateStruct,
-  NgbCalendar,
-  NgbDatepickerModule,
-  NgbDate
-} from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
-import { JsonPipe } from '@angular/common';
+import {Component, EventEmitter, Output} from '@angular/core';
+import {NgbCalendar, NgbDate, NgbDatepickerModule, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+import {FormsModule} from '@angular/forms';
+import {JsonPipe} from '@angular/common';
 
 @Component({
   selector: 'my-datepicker',
@@ -17,9 +12,11 @@ import { JsonPipe } from '@angular/common';
 export class MyDatepicker {
   model: NgbDateStruct;
   @Output() dateChanged: EventEmitter<Date> = new EventEmitter();
-  constructor(private calendar: NgbCalendar) {}
 
-  emitDateChanged(date:  NgbDate){
+  constructor(private calendar: NgbCalendar) {
+  }
+
+  emitDateChanged(date: NgbDate) {
     this.dateChanged.emit(new Date(date.year + "-" + date.month + "-" + date.day));
   }
 }

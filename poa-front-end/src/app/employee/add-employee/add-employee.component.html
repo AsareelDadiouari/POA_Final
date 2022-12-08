@@ -6,29 +6,31 @@
     <form [formGroup]="employeeForm" class="organization-form">
       <div class="mb-3">
         <label for="typeahead-basic">Nom de famille:</label>
-        <input [formControlName]="'lastname'" id="typeahead-basic"  type="text" class="form-control" />
+        <input [formControlName]="'lastname'" class="form-control" id="typeahead-basic" type="text"/>
       </div>
       <div class="mb-3">
         <label for="typeahead-basic1">Prénom :</label>
-        <input [formControlName]="'firstname'" id="typeahead-basic1" type="text" class="form-control" />
+        <input [formControlName]="'firstname'" class="form-control" id="typeahead-basic1" type="text"/>
       </div>
       <div class="mb-3">
         <label for="typeahead-basic1">Liste des organisations :</label>
-        <select [formControlName]="'selectedOrganizationStr'" class="form-select" aria-label="Default select example">
-          <option *ngFor="let org of organizations; let i = index" [ngValue]="org" >
+        <select [formControlName]="'selectedOrganizationStr'" aria-label="Default select example" class="form-select">
+          <option *ngFor="let org of organizations; let i = index" [ngValue]="org">
             {{org.name}}
           </option>
         </select>
       </div>
       <div class="mb-3">
-        <label for="typeahead-basic2">Date d'embauche :</label><hr>
-        <my-datepicker id="typeahead-basic2"  (dateChanged)="getDateOnSelect($event)" ></my-datepicker>
+        <label for="typeahead-basic2">Date d'embauche :</label>
+        <hr>
+        <my-datepicker (dateChanged)="getDateOnSelect($event)" id="typeahead-basic2"></my-datepicker>
       </div>
       <div class="mb-3">
         <label for="typeahead-basic3">Salaire :</label>
-        <input [formControlName]="'salary'" id="typeahead-basic3" type="text" class="form-control" />
+        <input [formControlName]="'salary'" class="form-control" id="typeahead-basic3" type="text"/>
       </div>
-      <button type="submit" class="btn btn-lg btn-outline-primary d-flex p-2" (click)="onSubmit($event)" >Valider</button>
+      <button (click)="onSubmit($event)" class="btn btn-lg btn-outline-primary d-flex p-2" type="submit">Valider
+      </button>
     </form>
   </div>
 </div>

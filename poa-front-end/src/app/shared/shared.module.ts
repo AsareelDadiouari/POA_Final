@@ -1,20 +1,22 @@
 import {CommonModule} from "@angular/common";
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 import {Dropdown} from "./dropdown/dropdown";
 import {MyDatepicker} from "./datePicker/my-datepicker";
+import {MyTable} from "./table/my-table";
 
 @NgModule({
   imports: [
     CommonModule,
     Dropdown,
-    MyDatepicker
+    MyDatepicker,
+    MyTable
   ],
-  declarations: [
-
-  ],
+  declarations: [],
   exports: [
     Dropdown,
-    MyDatepicker
+    MyDatepicker,
+    MyTable
   ]
 })
-export class SharedModule {}
+export class SharedModule {
+}

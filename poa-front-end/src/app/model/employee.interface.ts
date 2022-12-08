@@ -1,4 +1,4 @@
-import { Organization } from "./organization.interface"
+import {Organization} from "./organization.interface"
 
 export interface Employee {
   id?: number,

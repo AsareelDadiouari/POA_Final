@@ -1,6 +1,5 @@
-import {Component, ElementRef, ViewChild, ViewChildren} from '@angular/core';
+import {Component} from '@angular/core';
 import {Router} from "@angular/router";
-import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-root',
@@ -9,10 +8,11 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 })
 export class AppComponent {
   title = 'poa-front-end';
+
   constructor(public router: Router) {
   }
 
-  async redirectTo(eventInfo: {event: MouseEvent, route: string}): Promise<void> {
+  async redirectTo(eventInfo: { event: MouseEvent, route: string }): Promise<void> {
     await this.router.navigate([eventInfo.route]);
   }
 }

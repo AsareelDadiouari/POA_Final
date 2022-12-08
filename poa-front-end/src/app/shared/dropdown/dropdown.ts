@@ -1,16 +1,16 @@
 import {Component, ElementRef, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import { NgbDropdownModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbDropdownModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgForOf} from "@angular/common";
 
 @Component({
-	selector: 'app-dropdown[name]',
+  selector: 'app-dropdown[name]',
   standalone: true,
   imports: [NgbDropdownModule, NgForOf],
   templateUrl: './dropdown.html',
 })
 export class Dropdown implements OnInit {
   native: ElementRef;
-  @Output() action: EventEmitter<{event: MouseEvent, route: string}> = new EventEmitter();
+  @Output() action: EventEmitter<{ event: MouseEvent, route: string }> = new EventEmitter();
   @Input() name: string;
   buttonNames: string[] = [];
 
@@ -29,13 +29,13 @@ export class Dropdown implements OnInit {
     console.log(dropdownItemName);
 
     if (dropdownItemName.includes("Ajouter") && dropdownItemName.includes("employee"))
-      route="add-employee"
+      route = "add-employee"
     else if (dropdownItemName.includes("Liste") && dropdownItemName.includes("employee"))
-      route="employees"
+      route = "employees"
     else if (dropdownItemName.includes("Ajouter") && dropdownItemName.includes("organisation"))
-      route="add-organization"
+      route = "add-organization"
     else if (dropdownItemName.includes("Liste") && dropdownItemName.includes("organisation"))
-      route="organizations"
+      route = "organizations"
 
     this.action.emit({event, route});
   }
