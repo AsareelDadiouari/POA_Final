@@ -1,3 +1,4 @@
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 <h1 class="display-4">Ajouter une organisation</h1>
 
 <div class="card">
@@ -6,6 +7,14 @@
       <div class="mb-3">
         <label for="typeahead-basic">Nom Organisation:</label>
         <input [formControlName]="'name'" id="typeahead-basic" type="text" class="form-control" />
+      </div>
+      <div class="mb-3">
+        <label for="typeahead-basic2">Description :</label>
+        <input [formControlName]="'description'" id="typeahead-basic2" type="text" class="form-control" />
+      </div>
+      <div class="mb-3">
+        <label for="typeahead-basic1">Date de creation:</label><hr>
+        <my-datepicker id="typeahead-basic1"  (dateChanged)="getDateOnSelect($event)" ></my-datepicker>
       </div>
       <button type="submit" class="btn btn-lg btn-outline-primary d-flex p-2" (click)="onSubmit($event)" >Valider</button>
     </form>

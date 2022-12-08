@@ -14,6 +14,7 @@ export class AddEmployeeComponent implements OnInit {
   employeeForm: FormGroup;
   organizations: Array<Organization>;
   selectedOrganization: Organization;
+  employmentDate: Date;
 
   constructor(private formBuilder: FormBuilder,
               private organizationService: OrganizationService,
@@ -24,25 +25,33 @@ export class AddEmployeeComponent implements OnInit {
     this.employeeForm = this.formBuilder.group({
       lastname: new FormControl("", [Validators.required]),
       firstname: new FormControl("", [Validators.required]),
-      selected: new FormControl("", [Validators.required]),
+      selectedOrganizationStr: new FormControl("", [Validators.required]),
+      salary: new FormControl("", [Validators.required]),
     });
 
     this.organizationService.getOrganizations().subscribe((orgs) => {
       this.organizations = orgs.filter(org => org.name !== "");
-      this.employeeForm.controls['selected'].setValue(this.organizations[0], {onlySelf: true});
+      this.employeeForm.controls['selectedOrganizationStr'].setValue(this.organizations[0], {onlySelf: true});
     })
 
-    this.employeeForm.controls['selected'].valueChanges.subscribe((value) => {
+    this.employeeForm.controls['selectedOrganizationStr'].valueChanges.subscribe((value) => {
       this.selectedOrganization = value;
       console.log(this.selectedOrganization)
     })
+  }
+
+  getDateOnSelect(date: Date) {
+    this.employmentDate = date;
   }
   onSubmit($event: MouseEvent) {
     const employee = {
       firstname: this.employeeForm.get('firstname').value,
       lastname: this.employeeForm.get('lastname').value,
-      organization: this.employeeForm.get('selected').value as Organization
+      organization: this.employeeForm.get('selectedOrganizationStr').value as Organization,
+      salary: this.employeeForm.get('salary').value,
+      employmentDate : this.employmentDate
     } as Employee;
+
     this.employeeService.saveEmployee(employee).subscribe({
       next: (employee) => {
         this.employeeForm.markAsPristine();
@@ -53,4 +62,6 @@ export class AddEmployeeComponent implements OnInit {
       error: error => console.log(error)
     })
   }
+
+
 }

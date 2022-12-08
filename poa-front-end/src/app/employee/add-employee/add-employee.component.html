@@ -1,3 +1,4 @@
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <h1 class="display-4">Ajouter un employé</h1>
 
 <div class="card">
@@ -13,11 +14,19 @@
       </div>
       <div class="mb-3">
         <label for="typeahead-basic1">Liste des organisations :</label>
-        <select [formControlName]="'selected'" class="form-select" aria-label="Default select example">
+        <select [formControlName]="'selectedOrganizationStr'" class="form-select" aria-label="Default select example">
           <option *ngFor="let org of organizations; let i = index" [ngValue]="org" >
             {{org.name}}
           </option>
         </select>
+      </div>
+      <div class="mb-3">
+        <label for="typeahead-basic2">Date d'embauche :</label><hr>
+        <my-datepicker id="typeahead-basic2"  (dateChanged)="getDateOnSelect($event)" ></my-datepicker>
+      </div>
+      <div class="mb-3">
+        <label for="typeahead-basic3">Salaire :</label>
+        <input [formControlName]="'salary'" id="typeahead-basic3" type="text" class="form-control" />
       </div>
       <button type="submit" class="btn btn-lg btn-outline-primary d-flex p-2" (click)="onSubmit($event)" >Valider</button>
     </form>

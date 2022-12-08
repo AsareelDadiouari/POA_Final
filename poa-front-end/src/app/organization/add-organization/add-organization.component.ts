@@ -10,6 +10,7 @@ import { OrganizationService } from 'src/app/service/organization.service';
 })
 export class AddOrganizationComponent implements OnInit {
   organizationFrom: FormGroup;
+  creationDate: Date;
 
   constructor(private formBuilder: FormBuilder, private organizationService: OrganizationService) {
   }
@@ -17,11 +18,23 @@ export class AddOrganizationComponent implements OnInit {
   ngOnInit(): void {
     this.organizationFrom = this.formBuilder.group({
       name: new FormControl("", [Validators.required]),
+      description: new FormControl("", [Validators.required]),
     });
   }
 
+  getDateOnSelect(date: Date){
+    this.creationDate = date;
+    console.log(this.creationDate);
+  }
+
   onSubmit(event: Event): void {
-    this.organizationService.saveOrganization({name : this.organizationFrom.get("name").value} as Organization).subscribe({
+    const organization = {
+      name : this.organizationFrom.get("name").value,
+      description : this.organizationFrom.get("description").value,
+      creationDate: this.creationDate
+    } as Organization
+
+    this.organizationService.saveOrganization(organization).subscribe({
       next: (value) => {
         this.organizationFrom.markAsPristine();
         this.organizationFrom.markAsUntouched();

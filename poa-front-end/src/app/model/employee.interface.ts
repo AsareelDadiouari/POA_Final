@@ -5,4 +5,6 @@ export interface Employee {
   firstname?: string,
   lastname?: string
   organization?: Organization
+  salary?: number,
+  employmentDate?: Date
 }

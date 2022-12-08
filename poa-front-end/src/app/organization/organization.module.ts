@@ -4,12 +4,16 @@ import {AddOrganizationComponent} from "./add-organization/add-organization.comp
 import { CommonModule } from '@angular/common';
 import { ListOrganizationComponent } from './list-organization/list-organization.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {NgbDatepicker} from "@ng-bootstrap/ng-bootstrap";
+import {MyDatepicker} from "../shared/datePicker/my-datepicker";
 
 @NgModule({
   imports: [
     CommonModule,
     BrowserModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbDatepicker,
+    MyDatepicker
   ],
   declarations: [
     AddOrganizationComponent,
