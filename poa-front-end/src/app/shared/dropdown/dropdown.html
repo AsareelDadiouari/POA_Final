@@ -1,7 +1,12 @@
 <div class="row">
   <div class="col">
     <div class="d-inline-block" ngbDropdown>
-      <button class="btn btn-outline-light" id="dropdownBasic1" ngbDropdownToggle type="button">
+      <button *ngIf="isTypeOfDropdown" [ngClass]="'btn btn-outline-light'" id="dropdownBasic1" ngbDropdownToggle
+              type="button">
+        {{name}}
+      </button>
+      <button (click)="emitClickedEvent($event, name)" *ngIf="!isTypeOfDropdown" [ngClass]="'btn btn-outline-light'"
+              id="dropdownBasic2" type="button">
         {{name}}
       </button>
       <div aria-labelledby="dropdownBasic1" ngbDropdownMenu>

@@ -11,11 +11,17 @@
                 [name]="'Organisations'"
                 action1="Ajouter une organisation"
                 action2="Liste des organisations">
-  </app-dropdown>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </app-dropdown>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <app-dropdown (action)="redirectTo($event)"
                 [name]="'Employees'"
                 action1="Ajouter un employee"
                 action2="Liste des employees">
+  </app-dropdown>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <app-dropdown (action)="redirectTo($event)"
+                [name]="'Cotisation'">
+  </app-dropdown>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <app-dropdown (action)="redirectTo($event)"
+                [name]="'Comptabilité'">
   </app-dropdown>
   <div class="spacer"></div>
   <a aria-label="Angular on twitter" href="https://twitter.com/angular" rel="noopener" target="_blank" title="Twitter">
@@ -27,6 +33,7 @@
     </svg>
   </a>
 </div>
+<br/><br/><br/><br/><br/><br/><br/>
 <div class="content" role="main">
   <router-outlet></router-outlet>
 </div>

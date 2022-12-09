@@ -1,10 +1,12 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {LandingComponent} from "./landing/landing.component";
-import {AddOrganizationComponent} from "./organization/add-organization/add-organization.component";
-import {AddEmployeeComponent} from "./employee/add-employee/add-employee.component";
-import {ListOrganizationComponent} from "./organization/list-organization/list-organization.component";
-import {ListEmployeeComponent} from "./employee/list-employee/list-employee.component";
+import {AddOrganizationComponent} from "./component/organization/add-organization/add-organization.component";
+import {AddEmployeeComponent} from "./component/employee/add-employee/add-employee.component";
+import {ListOrganizationComponent} from "./component/organization/list-organization/list-organization.component";
+import {ListEmployeeComponent} from "./component/employee/list-employee/list-employee.component";
+import {ContributionComponent} from "./component/contribution/contribution.component";
+import {AccountancyComponent} from "./component/accountancy/accountancy.component";
 
 const routes: Routes = [
   {
@@ -26,6 +28,14 @@ const routes: Routes = [
   {
     path: 'employees',
     component: ListEmployeeComponent,
+  },
+  {
+    path: 'contribution',
+    component: ContributionComponent,
+  },
+  {
+    path: 'accountancy',
+    component: AccountancyComponent,
   },
   {
     path: '**',

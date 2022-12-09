@@ -4,8 +4,8 @@ import {CommonModule} from '@angular/common';
 import {AddEmployeeComponent} from "./add-employee/add-employee.component";
 import {ListEmployeeComponent} from './list-employee/list-employee.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {MyDatepicker} from "../shared/datePicker/my-datepicker";
-import {MyTable} from "../shared/table/my-table";
+import {MyDatepicker} from "../../shared/datePicker/my-datepicker";
+import {MyTable} from "../../shared/table/my-table";
 
 @NgModule({
   imports: [

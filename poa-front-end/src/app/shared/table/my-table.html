@@ -1,46 +1,46 @@
 <table class="table table-striped">
   <thead>
-    <tr *ngIf="type === 'Employee'">
-      <th scope="col">#</th>
-      <th scope="col">Nom</th>
-      <th scope="col">Prenom</th>
-      <th scope="col">Date d'embauche</th>
-      <th scope="col">Salaire</th>
-      <th scope="col">Organisation</th>
-    </tr>
-    <tr *ngIf="type === 'Organization'">
-      <th scope="col">#</th>
-      <th scope="col">Organisation</th>
-      <th scope="col">Date de creation</th>
-    </tr>
-    <tr *ngIf="type === 'Accountancy'">
-      <th scope="col">#</th>
-      <th scope="col">Organisation</th>
-      <th scope="col">Salaire global</th>
-      <th scope="col">Somme a payer</th>
-      <th scope="col">Montant remboursé</th>
-    </tr>
+  <tr *ngIf="type === 'Employee'">
+    <th scope="col">#</th>
+    <th scope="col">Nom</th>
+    <th scope="col">Prenom</th>
+    <th scope="col">Date d'embauche</th>
+    <th scope="col">Salaire</th>
+    <th scope="col">Organisation</th>
+  </tr>
+  <tr *ngIf="type === 'Organization'">
+    <th scope="col">#</th>
+    <th scope="col">Organisation</th>
+    <th scope="col">Date de creation</th>
+  </tr>
+  <tr *ngIf="type === 'Accountancy'">
+    <th scope="col">#</th>
+    <th scope="col">Organisation</th>
+    <th scope="col">Salaire global</th>
+    <th scope="col">Somme a payer</th>
+    <th scope="col">Montant remboursé</th>
+  </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let attr of data; index as i">
-      <th scope="row">{{ i + 1 }}</th>
-      <!-- Employees -->
-      <td *ngIf="type === 'Employee'">{{ attr?.lastname }}</td>
-      <td *ngIf="type === 'Employee'">{{ attr?.firstname }}</td>
-      <td *ngIf="type === 'Employee'">{{ attr?.employmentDate }}</td>
-      <td *ngIf="type === 'Employee'">{{ attr?.salary }}</td>
-      <td *ngIf="type === 'Employee'">{{ attr?.organization?.name }}</td>
+  <tr *ngFor="let attr of data; index as i">
+    <th scope="row">{{ i + 1 }}</th>
+    <!-- Employees -->
+    <td *ngIf="type === 'Employee'">{{ attr?.lastname }}</td>
+    <td *ngIf="type === 'Employee'">{{ attr?.firstname }}</td>
+    <td *ngIf="type === 'Employee'">{{ attr?.employmentDate.toString().substring(0, 10) }}</td>
+    <td *ngIf="type === 'Employee'">{{ attr?.salary }}</td>
+    <td *ngIf="type === 'Employee'">{{ attr?.organization?.name }}</td>
 
-      <!-- Organization -->
-      <td *ngIf="type === 'Organization'">{{ attr?.name }}</td>
-      <td *ngIf="type === 'Organization'">{{ attr?.creationDate }}</td>
+    <!-- Organization -->
+    <td *ngIf="type === 'Organization'">{{ attr?.name }}</td>
+    <td *ngIf="type === 'Organization'">{{ attr?.creationDate?.toString().substring(0, 10) }}</td>
 
-      <!-- Accountancy -->
-      <td *ngIf="type === 'Accountancy'">{{ attr?.organization?.name }}</td>
-      <td *ngIf="type === 'Accountancy'">{{ attr?.globalSalary }}</td>
-      <td *ngIf="type === 'Accountancy'">{{ attr?.totalContributions }}</td>
-      <td *ngIf="type === 'Accountancy'">{{ attr?.payedAmount }}</td>
+    <!-- Accountancy -->
+    <td *ngIf="type === 'Accountancy'">{{ attr?.organization?.name }}</td>
+    <td *ngIf="type === 'Accountancy'">{{ attr?.globalSalary }}</td>
+    <td *ngIf="type === 'Accountancy'">{{ attr?.totalContributions }}</td>
+    <td *ngIf="type === 'Accountancy'">{{ attr?.payedAmount }}</td>
 
-    </tr>
+  </tr>
   </tbody>
 </table>
