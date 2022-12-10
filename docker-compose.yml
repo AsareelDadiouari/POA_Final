@@ -11,7 +11,7 @@ services:
         condition: on-failure
         max_attempts: 3
     ports:
-      - '443:443'
+      - '443:5000'
     environment:
       - MONGODB_URI=mongodb+srv://Asa:FavRwReB2lnuleS9@cluster0.u8vwe.mongodb.net/?retryWrites=true&w=majority
       - MONGODB_USER=Asa
