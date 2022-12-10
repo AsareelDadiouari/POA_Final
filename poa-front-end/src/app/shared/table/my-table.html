@@ -5,13 +5,15 @@
     <th scope="col">Nom</th>
     <th scope="col">Prenom</th>
     <th scope="col">Date d'embauche</th>
-    <th scope="col">Salaire</th>
+    <th scope="col">Salaire Annuel</th>
+    <th scope="col">Salaire Mensuel</th>
     <th scope="col">Organisation</th>
   </tr>
   <tr *ngIf="type === 'Organization'">
     <th scope="col">#</th>
     <th scope="col">Organisation</th>
     <th scope="col">Date de creation</th>
+    <th *ngIf="pageInContribution" scope="col">Cotisation</th>
   </tr>
   <tr *ngIf="type === 'Accountancy'">
     <th scope="col">#</th>
@@ -27,13 +29,20 @@
     <!-- Employees -->
     <td *ngIf="type === 'Employee'">{{ attr?.lastname }}</td>
     <td *ngIf="type === 'Employee'">{{ attr?.firstname }}</td>
-    <td *ngIf="type === 'Employee'">{{ attr?.employmentDate.toString().substring(0, 10) }}</td>
-    <td *ngIf="type === 'Employee'">{{ attr?.salary }}</td>
+    <td *ngIf="type === 'Employee'">{{ attr?.employmentDate?.toString().substring(0, 10) }}</td>
+    <td *ngIf="type === 'Employee'">{{ attr?.salary }} CAD$</td>
+    <td *ngIf="type === 'Employee'">{{ (attr?.salary/12).toFixed(2) }} CAD$</td>
     <td *ngIf="type === 'Employee'">{{ attr?.organization?.name }}</td>
 
     <!-- Organization -->
     <td *ngIf="type === 'Organization'">{{ attr?.name }}</td>
     <td *ngIf="type === 'Organization'">{{ attr?.creationDate?.toString().substring(0, 10) }}</td>
+    <td *ngIf="type === 'Organization' && pageInContribution">
+      <button (click)="onContributionClick(attr)" class="btn btn-outline-info" type="submit">
+        Information
+      </button>
+    </td>
+
 
     <!-- Accountancy -->
     <td *ngIf="type === 'Accountancy'">{{ attr?.organization?.name }}</td>

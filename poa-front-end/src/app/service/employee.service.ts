@@ -21,17 +21,11 @@ export class EmployeeService {
     console.log(employee)
 
     return this.http.post<Employee>(this.url, employee).pipe(
-      switchMap((employee) => {
+      map((employee) => {
         const found = employee.organization;
         found.employees = found.employees ?? [];
         found.employees.push({id: employee.id});
-
-        return this.organizationService.saveOrganization(found).pipe(
-          map((organization: Organization) => {
-            console.log(organization)
-            return employee;
-          })
-        ) as Observable<Organization>;
+        return employee;
       }),
     );
   }

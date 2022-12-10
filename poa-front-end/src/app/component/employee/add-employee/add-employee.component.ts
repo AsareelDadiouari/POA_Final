@@ -36,7 +36,6 @@ export class AddEmployeeComponent implements OnInit {
 
     this.employeeForm.controls['selectedOrganizationStr'].valueChanges.subscribe((value) => {
       this.selectedOrganization = value;
-      console.log(this.selectedOrganization)
     })
   }
 

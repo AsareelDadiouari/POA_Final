@@ -1,9 +1,10 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {DecimalPipe, NgFor, NgForOf, NgIf} from '@angular/common';
 import {DataPageGenericType} from "../../custom-type/list-type.generics";
 import {Employee} from 'src/app/model/employee.interface';
 import {Organization} from "../../model/organization.interface";
 import {Accountancy} from "../../model/accountancy.interface";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'my-table',
@@ -13,12 +14,15 @@ import {Accountancy} from "../../model/accountancy.interface";
 })
 export class MyTable<T> implements OnChanges, OnInit {
   @Input() data: DataPageGenericType<T>[];
+  @Output() contributionClicked: EventEmitter<{state: boolean, organization: Organization}> = new EventEmitter<{state: boolean; organization: Organization}>();
+  pageInContribution: boolean = false;
   type: string;
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
+    this.pageInContribution = this.router.url === "/contribution";
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -30,5 +34,9 @@ export class MyTable<T> implements OnChanges, OnInit {
       } else if ((this.data[0] as Accountancy).numberEmployees !== undefined)
         this.type = 'Accountancy';
     }
+  }
+
+  onContributionClick(organization: Organization) {
+    this.contributionClicked.emit({state: true, organization});
   }
 }

@@ -1,0 +1,25 @@
+<div class="card">
+  <div class="card-body">
+    <form  class="organization-form">
+      <div class="mb-3">
+        <label for="typeahead-basic">Organisation:</label>
+        <input [disabled]="true" class="form-control" id="typeahead-basic" type="text" [value]="organization.name"/>
+      </div>
+      <div class="mb-3">
+        <label for="typeahead-basic2">Effectif :</label>
+        <input [disabled]="true" class="form-control" id="typeahead-basic2" type="text" [value]="organization.employees.length" />
+      </div>
+      <div class="mb-3">
+        <label for="typeahead-basic1">Salaire Global:</label>
+        <input [disabled]="true" class="form-control" id="typeahead-basic1" type="text" [value]="globalSalary() + ' CAD$'"/>
+      </div>
+      <div class="mb-3">
+        <label for="typeahead-basic3">Montant de la cotisation:</label>
+        <input [disabled]="true" class="form-control" id="typeahead-basic3" type="text" [value]="totalContribution() + ' CAD$'"/>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+

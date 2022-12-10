@@ -3,7 +3,7 @@ import {HttpClient, HttpEvent} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Organization} from "../model/organization.interface";
 import {environment} from "../../environments/environment";
-import {catchError, shareReplay} from "rxjs/operators";
+import {catchError, map, shareReplay} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -27,10 +27,15 @@ export class OrganizationService {
   getOrganizations(): Observable<Organization[]> {
     return this.http.get<Organization[]>(this.url)
       .pipe(
+        map((organizations) => {
+          return organizations.map(organization => {
+            organization.employees.forEach(employee => delete employee['organization']);
+            return organization;
+          });
+        }),
         catchError(error => {
           throw error
         }),
-        shareReplay(1)
       );
   }
 
