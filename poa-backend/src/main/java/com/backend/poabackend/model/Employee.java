@@ -30,6 +30,12 @@ public class Employee {
         this.organization = organization;
     }
 
+    public Employee(Long id, String firstname, String lastname) {
+        this.id = id;
+        this.firstname = firstname;
+        this.lastname = lastname;
+    }
+
     public Employee() {
 
     }

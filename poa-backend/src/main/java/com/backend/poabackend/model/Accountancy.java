@@ -11,6 +11,8 @@ public class Accountancy {
     private int numberOfEmployees;
     private Double globalSalary;
     private Double totalContribution;
+    private Double payedAmount;
+
 
     public Organization getOrganization() {
         return organization;
@@ -50,5 +52,13 @@ public class Accountancy {
 
     public void setTotalContribution(Double totalContribution) {
         this.totalContribution = totalContribution;
+    }
+
+    public Double getPayedAmount() {
+        return payedAmount;
+    }
+
+    public void setPayedAmount(Double payedAmount) {
+        this.payedAmount = payedAmount;
     }
 }
