@@ -1,2 +1,5 @@
 <h1 class="display-4">Liste Organisations</h1>
+<div *ngIf="organizations === undefined" class="d-flex justify-content-center">
+  <div class="spinner-grow" role="status"></div>
+</div>
 <my-table [data]="organizations"></my-table>

@@ -25,12 +25,18 @@ export class EmployeeService {
         const found = employee.organization;
         found.employees = found.employees ?? [];
         found.employees.push({id: employee.id});
+
         return employee;
       }),
     );
   }
 
   getEmployees(): Observable<Employee[]> {
-    return this.http.get<Employee[]>(this.url);
+    return this.http.get<Employee[]>(this.url).pipe(
+      map((employees) => employees.map((employee) =>{
+        delete employee.organization.employees
+        return employee;
+      }))
+    );
   }
 }
