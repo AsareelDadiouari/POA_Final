@@ -40,6 +40,7 @@ export class AddOrganizationComponent implements OnInit {
         this.organizationFrom.markAsUntouched();
         this.organizationFrom.reset();
         console.log(value);
+        alert("Organisation ajoutée");
       },
       error: error => console.log(error)
     });

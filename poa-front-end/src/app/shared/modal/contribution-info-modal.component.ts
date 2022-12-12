@@ -62,9 +62,12 @@ export class ContributionInfoModal implements OnInit {
 
         if (nextPayment <= this.totalContribution()){
           accountancy.payedAmounts.push(this.payedAmount.getRawValue());
+          accountancy.totalContribution = this.totalContribution();
           this.accountancyService.saveAccountancy(accountancy).subscribe(acc => {
             console.log(acc);
           })
+        } else {
+          alert("La somme a verser est supérieur au reste a payer");
         }
       },
       error: async (error) => {

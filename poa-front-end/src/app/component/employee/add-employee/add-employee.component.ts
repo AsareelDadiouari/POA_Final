@@ -58,6 +58,7 @@ export class AddEmployeeComponent implements OnInit {
         this.employeeForm.markAsUntouched();
         this.employeeForm.reset();
         console.log(employee);
+        alert("Employee ajouté");
       },
       error: error => console.log(error)
     })
