@@ -19,8 +19,9 @@
     <th scope="col">#</th>
     <th scope="col">Organisation</th>
     <th scope="col">Salaire global</th>
-    <th scope="col">Somme a payer</th>
-    <th scope="col">Montant remboursé</th>
+    <th scope="col">Montant de la cotisation</th>
+    <th scope="col">Montant Payé</th>
+    <th scope="col">Reste a Payé</th>
   </tr>
   </thead>
   <tbody>
@@ -43,12 +44,12 @@
       </button>
     </td>
 
-
     <!-- Accountancy -->
     <td *ngIf="type === 'Accountancy'">{{ attr?.organization?.name }}</td>
     <td *ngIf="type === 'Accountancy'">{{ attr?.globalSalary }}</td>
-    <td *ngIf="type === 'Accountancy'">{{ attr?.totalContributions }}</td>
-    <td *ngIf="type === 'Accountancy'">{{ attr?.payedAmount }}</td>
+    <td *ngIf="type === 'Accountancy'">{{ attr?.totalContribution }}</td>
+    <td *ngIf="type === 'Accountancy'">{{ this.totalPayedAmounts(i) }}</td>
+    <td *ngIf="type === 'Accountancy'">{{  attr?.totalContribution - this.totalPayedAmounts(i) }}</td>
 
   </tr>
   </tbody>

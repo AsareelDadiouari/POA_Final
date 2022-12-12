@@ -2,21 +2,32 @@
   <div class="card-body">
     <form  class="organization-form">
       <div class="mb-3">
-        <label for="typeahead-basic">Organisation:</label>
-        <input [disabled]="true" class="form-control" id="typeahead-basic" type="text" [value]="organization.name"/>
+        <label *ngIf="!this.showOrganizationList" for="typeahead-basic">Organisation:</label>
+        <input *ngIf="!this.showOrganizationList" [disabled]="true" class="form-control" id="typeahead-basic" type="text" [value]="organization.name"/>
+        <label *ngIf="this.showOrganizationList" for="typeahead-basic1">Liste des organisations :</label>
+        <select *ngIf="this.showOrganizationList" [formControl]="selectedOrganization" aria-label="Default select example" class="form-select">
+          <option *ngFor="let org of organizations; let i = index" [ngValue]="org">
+            {{org.name}}
+          </option>
+        </select>
       </div>
       <div class="mb-3">
         <label for="typeahead-basic2">Effectif :</label>
-        <input [disabled]="true" class="form-control" id="typeahead-basic2" type="text" [value]="organization.employees.length" />
+        <input [disabled]="true" class="form-control" id="typeahead-basic2" type="text" [value]="organization?.employees.length" />
       </div>
       <div class="mb-3">
-        <label for="typeahead-basic1">Salaire Global:</label>
-        <input [disabled]="true" class="form-control" id="typeahead-basic1" type="text" [value]="globalSalary() + ' CAD$'"/>
+        <label for="typeahead-basic1">Salaire Global (Par mois):</label>
+        <input [disabled]="true" class="form-control" id="typeahead-basic1" type="text" [value]="globalSalary()?.toFixed(2) + ' CAD$'"/>
       </div>
       <div class="mb-3">
-        <label for="typeahead-basic3">Montant de la cotisation:</label>
+        <label for="typeahead-basic3">Montant de la cotisation (Par mois):</label>
         <input [disabled]="true" class="form-control" id="typeahead-basic3" type="text" [value]="totalContribution() + ' CAD$'"/>
       </div>
+      <div *ngIf="this.showOrganizationList" class="mb-3">
+        <label for="typeahead-basic4">Somme à verser :</label>
+        <input [formControl]="payedAmount" class="form-control" id="typeahead-basic4" type="text" />
+      </div>
+      <button *ngIf="this.showOrganizationList" (click)="onPayContribution($event)" class="btn btn-lg btn-outline-primary d-flex p-2" type="submit">Paiement</button>
     </form>
   </div>
 </div>

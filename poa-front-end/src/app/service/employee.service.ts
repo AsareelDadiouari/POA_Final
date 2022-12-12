@@ -1,20 +1,17 @@
 import {Injectable} from '@angular/core';
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
-import {Organization} from '../model/organization.interface';
 import {Observable} from 'rxjs';
 import {Employee} from "../model/employee.interface";
 import {map, switchMap} from "rxjs/operators";
-import {OrganizationService} from "./organization.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
   url = environment.backend_url + "/employees";
-  organizationUrl = environment.backend_url + "/organizations"
 
-  constructor(private http: HttpClient, private organizationService: OrganizationService) {
+  constructor(private http: HttpClient) {
   }
 
   saveEmployee(employee: Employee): Observable<Employee> {
