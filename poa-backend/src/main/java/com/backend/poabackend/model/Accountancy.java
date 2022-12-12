@@ -1,17 +1,25 @@
 package com.backend.poabackend.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.List;
 
 @Document("Accountancy")
 public class Accountancy {
     @Id
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id", nullable = false)
+    @Indexed(unique = true) private Long id;
     private Organization organization;
     private int numberOfEmployees;
     private Double globalSalary;
     private Double totalContribution;
-    private Double payedAmount;
+    private List<Double> payedAmounts;
 
 
     public Organization getOrganization() {
@@ -54,11 +62,11 @@ public class Accountancy {
         this.totalContribution = totalContribution;
     }
 
-    public Double getPayedAmount() {
-        return payedAmount;
+    public List<Double> getPayedAmounts() {
+        return payedAmounts;
     }
 
-    public void setPayedAmount(Double payedAmount) {
-        this.payedAmount = payedAmount;
+    public void setPayedAmounts(List<Double> payedAmounts) {
+        this.payedAmounts = payedAmounts;
     }
 }
