@@ -31,7 +31,7 @@ public class PoaBackendApplication {
             public void addCorsMappings(CorsRegistry registry) {
                 WebMvcConfigurer.super.addCorsMappings(registry);
                 registry.addMapping("/")
-                        .allowedOrigins("http://localhost:4200", "*");
+                        .allowedOrigins("http://localhost:4200", "https://poa-final-angular-ijqtdj2wxq-uc.a.run.app","*");
             }
         };
     }
